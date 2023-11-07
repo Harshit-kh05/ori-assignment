@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Image from "./Image";
 
-function Gallery() {
+function Gallery({ searchRes, searchLoaded }) {
   const [images, setImages] = useState([]);
   const [loaded, setIsLoaded] = useState(false);
   const [page, setPage] = useState(1);
@@ -34,41 +33,44 @@ function Gallery() {
   }, []);
 
   return (
-    <InfiniteScroll
-      dataLength={images.length} //This is important field to render the next data
-      next={() => fetchData()}
-      hasMore={true}
-      loader={
-        <div className="text-center">
-          <iframe
-            src="https://giphy.com/embed/l4FGKbWgkhHVGXzTW"
-            width="200"
-            height="200"
-            frameBorder="0"
-            class="giphy-embed"
-            title="loader"
-          ></iframe>
+    <div className="mt-5 pt-5">
+      <InfiniteScroll
+        className="mt-5"
+        dataLength={images.length}
+        next={() => fetchData()}
+        hasMore={true}
+        loader={
+          <div className="text-center">
+            <iframe
+              src="https://giphy.com/embed/l4FGKbWgkhHVGXzTW"
+              width="200"
+              height="200"
+              frameBorder="0"
+              class="giphy-embed"
+              title="loader"
+            ></iframe>
+          </div>
+        }
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <div className="row">
+          {loaded
+            ? images.map((image, idx) => (
+                <Image
+                  key={idx}
+                  id={image.id}
+                  url={image.url}
+                  title={image.title}
+                />
+              ))
+            : ""}
         </div>
-      }
-      endMessage={
-        <p style={{ textAlign: "center" }}>
-          <b>Yay! You have seen it all</b>
-        </p>
-      }
-    >
-      <div className="row">
-        {loaded
-          ? images.map((image, idx) => (
-              <Image
-                key={idx}
-                id={image.id}
-                url={image.url}
-                title={image.title}
-              />
-            ))
-          : ""}
-      </div>
-    </InfiniteScroll>
+      </InfiniteScroll>
+    </div>
   );
 }
 

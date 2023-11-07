@@ -1,4 +1,10 @@
-
+.img-container {
+  height: 300px !important;
+}
+.card-img {
+  height: 250px !important;
+  object-fit: contain;
+}
 
 .modal-img {
   height: 400px;

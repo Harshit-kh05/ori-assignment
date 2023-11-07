@@ -11,8 +11,11 @@ export default function Image({ id, url, title }) {
   };
   return (
     <>
-      <div onClick={onClick} className="col col-6 col-lg-4 text-center mt-3">
-        <img className="img-thumbnail" alt={title} src={url}></img>
+      <div
+        onClick={onClick}
+        className="img-container col col-6 col-lg-4 text-center mt-3"
+      >
+        <img className="img-thumbnail card-img" alt={title} src={url}></img>
         <p className="fw-bold">{title}</p>
       </div>
       <div
