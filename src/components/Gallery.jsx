@@ -11,7 +11,7 @@ function Gallery() {
   const fetchData = () => {
     console.log("chala");
     fetch(
-      `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=a856b9dec52b4f412babb3c0575f68d7&format=json&nojsoncallback=1&per_page=6&page=${page}`
+      `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${process.env.REACT_APP_API_KEY}&format=json&nojsoncallback=1&per_page=6&page=${page}`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -19,6 +19,7 @@ function Gallery() {
         json.photos.photo.forEach((photo) => {
           photos.push({
             title: photo.title,
+            id: photo.id,
             url: `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`,
           });
         });
@@ -45,7 +46,7 @@ function Gallery() {
             height="200"
             frameBorder="0"
             class="giphy-embed"
-            allowFullScreen
+            title="loader"
           ></iframe>
         </div>
       }
@@ -58,7 +59,12 @@ function Gallery() {
       <div className="row">
         {loaded
           ? images.map((image, idx) => (
-              <Image key={idx} url={image.url} title={image.title} />
+              <Image
+                key={idx}
+                id={image.id}
+                url={image.url}
+                title={image.title}
+              />
             ))
           : ""}
       </div>
