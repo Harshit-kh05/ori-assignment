@@ -1,6 +1,18 @@
+.suggestion-box {
+  position: fixed;
+  top: 100px;
+  left: 40%;
+  width:13%;
+  background: white;
+}
+
+
 .img-container {
   height: 300px !important;
 }
+
+
+
 .card-img {
   height: 250px !important;
   object-fit: contain;

@@ -12,12 +12,14 @@ function App() {
   const [searchLoading, setSearchLoading] = useState(false)
   const [searchRes, setSearchRes] = useState([])
 
-  function toggleLoading() {
-    if (searchLoading)
-      setSearchLoading(false)
-    else
-      setSearchLoading(true)
+  function startLoading() {
+    setSearchLoading(true)
   }
+
+  function stopLoading() {
+    setSearchLoading(false)
+  }
+
 
   function handleSearchRes(res) {
     setSearchRes(res)
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Navbar toggleLoading={toggleLoading} handleSearchRes={handleSearchRes} />
+      <Navbar startLoading={startLoading} stopLoading={stopLoading} handleSearchRes={handleSearchRes} />
       <Gallery searchRes={searchRes} searchLoading={searchLoading} />
     </>
   );
