@@ -43,11 +43,11 @@ function Gallery({ searchRes, searchLoading }) {
           loader={
             <div className="text-center">
               <iframe
-                src="https://giphy.com/embed/l4FGKbWgkhHVGXzTW"
-                width="200"
-                height="200"
+                src="https://giphy.com/embed/kUTME7ABmhYg5J3psM"
+                width="250"
+                height="150"
                 frameBorder="0"
-                class="giphy-embed"
+                className="giphy-embed"
                 title="loader"
               ></iframe>
             </div>
@@ -83,7 +83,7 @@ function Gallery({ searchRes, searchLoading }) {
               width="200"
               height="200"
               frameBorder="0"
-              class="giphy-embed"
+              className="giphy-embed"
               title="loader"
             ></iframe>
           ) : (
